@@ -1,0 +1,67 @@
+{% extends "index.html" %}
+
+    {% block judul %}
+        <h1 class="display-4">
+            RENTAL MOBIL
+        </h1>
+    {% endblock judul %}
+
+    {% block isi1 %}
+        <p>
+            Website Rental Mobil ini dibuat karena memudahkan anda jika ingin jalan-jalan atau bepergian bersama keluarga
+            namun tidak memiliki kendaraan mobil, oleh karena itu kami membuat website ini adalah agar anda bisa menikmati
+            waktu bersama keluarga tanpa terbatasi oleh kendaraan yang anda punya, kedepannya kami juga akan membuat aplikasi
+            (bismilah) agar orang lebih mudah mengaksesnya untuk merental mobil tanpa harus mencari-cari tempat rental mobil
+            yang murah dan mudah namun tidak mempersulit dalam pengurus penyewaan tersebut
+        </p>
+    {% endblock isi1 %}
+
+    {% block isi2 %}
+        <center><h2>MOBIL YANG DISEWAKAN</h2></center>
+
+        <div class="slideshow-container">
+
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 4</div>
+          <a href="/">
+                  <img src="{{ url_for('static', filename='images/mobil1.png') }}" style="width: 70%">
+          </a>
+          <div class="text">Honda Jazz</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 4</div>
+          <a href="/">
+                  <img src="{{ url_for('static', filename='images/mobil2.png') }}" style="width: 70%">
+          </a>
+          <div class="text">Daihatsu Xenia</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 4</div>
+          <a href="/">
+                  <img src="{{ url_for('static', filename='images/hyundai.jpg') }}" style="width: 70%">
+          </a>
+          <div class="text">Hyundai Tucson</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">4 / 4</div>
+          <a href="/">
+                  <img src="{{ url_for('static', filename='images/mobil4.png') }}" style="width: 70%">
+          </a>
+          <div class="text">Toyota Yaris</div>
+        </div>
+
+        </div>
+        <br>
+
+        <div style="text-align:center">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+    {% endblock isi2 %}
+
+
