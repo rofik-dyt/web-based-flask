@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Tag meta untuk menentukan karakter encoding yang digunakan, biasanya UTF-8 -->
+    <meta charset="utf-8" />
+    <!-- Tag meta agar kompatibel dengan Internet Explorer -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tag meta untuk melakukan sekala secara responsif terhadap viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Judul Website -->
+    {% if title %}
+        <title>Rental Mobil - {{ title }}</title>
+    {% else %}
+        <title>Rental Mobil</title>
+    {% endif %}
+    <!-- Import CSS Bootstrap JS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/basic.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+
+</head>
+<body>
+    {% if title %}
+    <header class="sub">
+        <nav class="navbar-expand-md navbar-dark" id="navibar">
+            <div class="menu">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <a class="nav-link link-rental" href="{{ url_for('home')}}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link link" href="{{ url_for('rental')}}">Rental</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link link" href="{{ url_for('about')}}">Report</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+{% else %}
+    <header class="main">
+        <nav class="navbar-expand-md navbar-dark" id="navibar">
+            <div class="menu">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <a class="nav-link link-rental" href="{{ url_for('home')}}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link link" href="{{ url_for('rental')}}">Rental</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link link" href="{{ url_for('about')}}">Report</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+{% endif %}
+
+{% block judul %}
+{% endblock judul %} 
+    
+    </header>
+    
+    
+    <div class="bagian1">
+        <div class="container pading" id="isi1">
+            {% block isi1 %}
+            {% endblock isi1 %}
+        </div>
+    </div>
+
+
+    <div class="bagian2">
+        <div class="container pading" id="isi2">
+            {% block isi2 %}
+            {% endblock isi2 %}
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        $(window).on("scroll", function(){
+            if($(window).scrollTop()) {
+                $('nav').addClass('scroll');
+            }
+            else{
+                $('nav').removeClass('scroll');
+            }
+        })
+        var pad1 = document.getElementById('isi1')
+        var pad2 = document.getElementById('isi2')
+
+        {% if title == 'Rental' %}
+            pad2.className -= "pading";
+            pad2.className -= "subpading";
+            pad1.className += " subpading";
+        {% elif title == 'Total' %}
+            pad1.className -= "pading";
+            pad2.className -= "pading";
+            pad2.className += " subpading";
+        {% else %}
+            var slideIndex = 0;
+            showSlides();
+
+            function showSlides() {
+              var i;
+              var slides = document.getElementsByClassName("mySlides");
+              var dots = document.getElementsByClassName("dot");
+              for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+              }
+              slideIndex++;
+              if (slideIndex > slides.length) {slideIndex = 1}
+              for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+              }
+              slides[slideIndex-1].style.display = "block";
+              dots[slideIndex-1].className += " active";
+              setTimeout(showSlides, 2000); // Change image every 2 seconds
+            }
+        {% endif %}
+    </script>
+
+
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-3.2.1.slim.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+</body>
+</html>
